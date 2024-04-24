@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-const privateRoutes = ['/dashboard'];
+const privateRoutes = ['/dashboard','/'];
 
 export default async function middleware(req) {
   const path = req.nextUrl.pathname;
