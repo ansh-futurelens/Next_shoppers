@@ -109,7 +109,7 @@
       }
     },
     "/api/v1/auth/verify-email": {
-      "post": {
+      "get": {
         "summary": "Verify Email",
         "tags": ["Authentication"],
         "description": "Verify email address using the provided token",
