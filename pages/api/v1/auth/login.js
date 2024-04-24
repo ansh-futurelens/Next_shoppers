@@ -3,6 +3,12 @@ import {
   withDatabaseConnection,
   ResponseHelper,
 } from '../../utils/apiDependencies';
+import Cors from 'micro-cors'; // Import micro-cors
+
+// Create a CORS middleware instance
+const cors = Cors({
+  allowMethods: ['POST'], // Specify allowed HTTP methods
+});
 
 async function handler(req, res) {
   try {
@@ -18,4 +24,4 @@ async function handler(req, res) {
   }
 }
 
-export default withDatabaseConnection(handler);
+export default cors(withDatabaseConnection(handler)); // Wrap the handler with cors middleware
