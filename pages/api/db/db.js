@@ -9,10 +9,10 @@ export const connectToDatabase = async () => {
     console.log('Using existing database connection');
     return;
   }
-  console.log(process.env.MONGODB_URI);
+  console.log(process.env.NEXT_PUBLIC_MONGODB_URI);
   try {
     const db = await mongoose.connect(
-      config.database[process.env.NODE_ENV || 'development'].url,
+      config.database[process.env.NEXT_PUBLIC_NODE_ENV || 'development'].url,
       {
         useNewUrlParser: true,
         useUnifiedTopology: true,
