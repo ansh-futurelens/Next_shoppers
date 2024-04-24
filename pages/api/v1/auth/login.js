@@ -13,17 +13,20 @@ const corsMiddleware = cors({
 
 async function handler(req, res) {
   try {
+    // Apply CORS headers
     await corsMiddleware(req, res);
+
     if (req.method === 'POST') {
-      return res.status(200).json(await login(req, res));
+      const result = await login(req, res);
+      res.status(200).json(result);
+    } else {
+      // If method is not allowed
+      res.status(405).json(ResponseHelper.error(405, 'Method Not Allowed'));
     }
-    res.status(405).json(ResponseHelper.error(405, 'Method Not Allowed'));
   } catch (error) {
     console.error('Error:', error);
-    res
-      .status(500)
-      .json(ResponseHelper.error(500, 'Internal server error', error.message));
+    res.status(500).json(ResponseHelper.error(500, 'Internal server error', error.message));
   }
 }
 
-export default cors(withDatabaseConnection(handler)); // Wrap the handler with cors middleware
+export default withDatabaseConnection(handler);
