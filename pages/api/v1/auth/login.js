@@ -3,15 +3,17 @@ import {
   withDatabaseConnection,
   ResponseHelper,
 } from '../../utils/apiDependencies';
-import Cors from 'micro-cors'; // Import micro-cors
+import cors from 'micro-cors';
 
-// Create a CORS middleware instance
-const cors = Cors({
-  allowMethods: ['POST'], // Specify allowed HTTP methods
+const corsMiddleware = cors({
+  origin: '*',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'Authorization']
 });
 
 async function handler(req, res) {
   try {
+    await corsMiddleware(req, res);
     if (req.method === 'POST') {
       return res.status(200).json(await login(req, res));
     }
