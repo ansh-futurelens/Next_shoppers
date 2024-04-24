@@ -3,6 +3,11 @@
  */
 const envFound = require('dotenv').config();
 
+if (envFound.error) {
+  // This error should crash whole process
+  throw new Error("⚠️  Couldn't find .env file  ⚠️");
+}
+
 module.exports = {
   node_env: process.env.NODE_ENV,
   database: {
@@ -27,11 +32,6 @@ module.exports = {
   jwtEmailVerificationSecret:
     process.env.EMAIL_VERIFICATION_SECRET || 'myemailverificationsecretkey',
   CacheExpirationTimeInSeconds: process.env.CACHE_EXPIRE_TIME || '1h',
-  google: {
-    clientID: process.env.GOOGLE_CLIENT_ID,
-    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: process.env.GOOGLE_CALLBACK_URL,
-  },
   mail: {
     mail_user: process.env.MAIL_USER,
     mail_pass: process.env.MAIL_PASS,
