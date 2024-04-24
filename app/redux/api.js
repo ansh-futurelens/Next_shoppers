@@ -6,6 +6,7 @@ const BASE_URL = '/api/v1/auth';
 
 export function useFetch() {
   const token = Cookies.get('shoppersToken');
+  console.log("Token Cokkiess--",token)
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
