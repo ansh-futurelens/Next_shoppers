@@ -6,7 +6,6 @@ export default async function middleware(req) {
   const token = req.cookies.get('shoppersToken');
   console.log("Token Cokkiess--",token)
   console.log("All cokkiess--",req.cookies)
-  console.log(" Cookies--",Cookies)
   if (privateRoutes.includes(path) && !token) {
     return NextResponse.redirect(new URL('/login', req.nextUrl));
   }
