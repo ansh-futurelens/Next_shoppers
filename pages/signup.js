@@ -18,7 +18,7 @@ export default function SignupPage() {
       const { data } = await signup({ email, password, firstName, lastName });
       // Set token in cookies if needed
       data?.token && Cookies.set('shoppersToken', data.token);
-      router.push('/');
+      router.push('/login');
     } catch (error) {
       // Handle errors
       console.error('Signup failed', error);
