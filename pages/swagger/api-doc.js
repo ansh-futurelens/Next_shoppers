@@ -1,8 +1,7 @@
-import { useEffect, useState } from 'react';
-import dynamic from 'next/dynamic'; // Import dynamic from Next.js
+import dynamic from 'next/dynamic'; 
 import swaggerJson from '../../swagger.json';
+import 'swagger-ui-react/swagger-ui.css'; 
 
-// Dynamically import SwaggerUI component
 const SwaggerUI = dynamic(() => import('swagger-ui-react'), { ssr: false });
 
 function ApiDoc() {
