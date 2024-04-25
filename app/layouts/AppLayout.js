@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Sidebar from '../components/Sidebar';
 import { setIsSidebarOpen, toggleSidebar } from '../redux/slices/centralSlice';
 import { useDispatch, useSelector } from 'react-redux';
+import Topbar from '../components/Topbar';
 
 function AppLayout({ children }) {
   const isSidebarOpen = useSelector((state) => state.central.isSidebarOpen);
@@ -43,19 +44,17 @@ function AppLayout({ children }) {
             animate={{ x: 0 }}
             exit={{ x: '-100%' }}
             transition={{ duration: 0.3, type: 'spring', bounce: 0.25 }}
-            className="absolute md:hidden z-30 top-0 left-0"
+            className="absolute md:hidden z-30 top-0 left-0 w-64"
           >
             <Sidebar />
           </motion.div>
         )}
       </AnimatePresence>
-      <div className="grid md:grid-cols-[240px_1fr] w-screen overflow-x-hidden">
-        <div className="hidden md:block">
+      <div className="flex h-screen overflow-hidden">
+        <div className="hidden md:block w-64">
           <Sidebar />
         </div>
-        <div className="w-full overflow-x-auto max-w-[1440px] mx-auto">
-          {children}
-        </div>
+        <div className="flex-1 min-w-0 overflow-auto">{children}</div>
       </div>
     </motion.div>
   );
