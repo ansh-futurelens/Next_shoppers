@@ -10,8 +10,8 @@ import useToast from '@/app/utils/hooks/useToast';
 export default function LoginPage() {
   const router = useRouter();
   const { login, loading, error } = useFetch();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('ansh@yopmail.com');
+  const [password, setPassword] = useState('123');
   const { showToast } = useToast();
 
   const handleSubmit = async (event) => {
@@ -32,8 +32,8 @@ export default function LoginPage() {
 
   return (
     <MainLayout>
-      <div className="min-h-screen bg-[#f4f4f4] flex justify-center ">
-        <div className="py-5 px-12 bg-white rounded-2xl shadow-xl z-20 lg:mt-10 mt-20 h-full">
+      <div className="min-h-screen bg-[#f4f4f4] flex justify-center items-center">
+        <div className="py-5 px-12 bg-white rounded-2xl shadow-xl z-20">
           <div>
             <h1 className="text-center cursor-pointer font-bold text-[#081225] text-2xl antialiased">
               Login to account
